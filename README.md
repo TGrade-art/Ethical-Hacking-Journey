@@ -21,7 +21,7 @@ Currently focused on web application security, network penetration testing, and 
 
 | Platform | Status |
 |----------|--------|
-| TryHackMe | Top 21% — [View Profile]([https://tryhackme.com/p/youru](https://tryhackme.com/dashboard)) |
+| TryHackMe | Top 21% — [View Profile]((https://tryhackme.com/dashboard)) |
 | HackTheBox | 2 machines rooted |
 | PortSwigger Web Academy | 5 labs completed |
 
