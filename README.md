@@ -48,9 +48,9 @@ Currently focused on web application security, network penetration testing, and 
 ## 📜 Certifications & Courses
 
 - [ ] CS50 Computer Science — Harvard (in progress)
-- [ ] CompTIA Security+ (target: 2027)
-- [ ] eJPT — eLearnSecurity (target: 2027)
-- [ ] OSCP — Offensive Security (target: 2028)
+- [ ] CompTIA Security+ (target: 2028)
+- [ ] eJPT — eLearnSecurity (target: 2029)
+- [ ] OSCP — Offensive Security (target: 2030)
 
 ---
 
