@@ -28,7 +28,7 @@ gobuster dir -u http://10.67.167.129 \
   -o gobuster_http.txt
 ```
 
-![[1.png]]
+![[images/1.png]]
 
 The scan revealed two interesting endpoints:
 
