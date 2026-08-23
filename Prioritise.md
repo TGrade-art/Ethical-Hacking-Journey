@@ -2,7 +2,7 @@
 
 **Platform:** TryHackMe  
 **Date:** 2026-08-22
-**Difficulty:** Easy 🟢  
+**Difficulty:** Medium 🟡  
 **Category:** Web Application / SQL Injection  
 **Room URL:** https://tryhackme.com/room/prioritise
 **Status:** ✅ Completed
