@@ -1,10 +1,10 @@
-# {{Searchlight}}
+# Searchlight
 
 **Platform:** TryHackMe
-**Date:** {{date:2026-03-17}}
-**Difficulty:** {{easy}}
-**Category:** {{OSINT}}
-**Room URL:** https://tryhackme.com/room/searchlightosint)}}
+**Date:** date:2026-08-28
+**Difficulty:** easy
+**Category:** OSINT
+**Room URL:** https://tryhackme.com/room/searchlightosint)
 **Status:**  ✅ Completed
 
 ---
