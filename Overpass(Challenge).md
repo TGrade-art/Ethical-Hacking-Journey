@@ -1,10 +1,10 @@
-# {{Room Name}}
+# Overpass
 
 **Platform:** TryHackMe
-**Date:** {{date:2026-03-25}}
-**Difficulty:** {{Easy}}
-**Category:** {{Privilege Escalation/Web Hacking}}
-**Room URL:** https://tryhackme.com/room/overpass}}
+**Date:** date:2026-08-28
+**Difficulty:** Easy
+**Category:** Privilege Escalation/Web Hacking
+**Room URL:** https://tryhackme.com/room/overpass
 **Status:** ✅ Completed
 
 ---
