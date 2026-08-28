@@ -1,7 +1,7 @@
 # Ignite
 
 **Platform:** TryHackMe
-**Date:** date:2026-03-24
+**Date:** date:2026-08-28
 **Difficulty:** easy
 **Category:** Web Hacking, FuelCMS Vulnerability
 **Room URL:** https://tryhackme.com/room/ignite
