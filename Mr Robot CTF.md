@@ -1,7 +1,7 @@
 # Mr Robot CTF
 
 **Platform:** TryHackMe
-**Date:** 2026-06-19
+**Date:** 2026-08-29
 **Difficulty:** Medium
 **Category:** Linux / Web Hacking / Privilege Escalation
 **Room URL:** https://tryhackme.com/room/mrrobot
