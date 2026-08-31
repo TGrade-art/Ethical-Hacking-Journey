@@ -1,7 +1,7 @@
 # White Rabbit
 
 **Platform:** TryHackMe
-**Date:** 26/07/2026
+**Date:** 2026-08-29
 **Difficulty:** Medium
 **Category:** Prompt Injection / AI Hacking
 **Room URL:** https://tryhackme.com/room/whiterabbit
