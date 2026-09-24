@@ -8,10 +8,6 @@
 **Main vulnerability:** Broken custom authentication scheme using PHP `crypt()`
 **Date:** 24/09/2026
 
-The central lesson of this room is simple:
-
-> **Don't invent your own cryptographic system.**
-
 The application attempts to create a "military-grade" authentication cookie, but its construction makes the cookie predictable and partially controllable. TryHackMe describes the room as requiring two stages: first breaking the authentication scheme, then recovering the encryption key.
 
 ---
